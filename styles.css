@@ -72,6 +72,11 @@ input {
   color: white;
 }
 
+#results-div {
+  text-align: center;
+  margin-top: 20px;
+}
+
 .hidden {
   display: none;
 }
