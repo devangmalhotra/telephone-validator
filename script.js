@@ -25,19 +25,23 @@ const validPhoneNumber = () => {
       resultsDiv.appendChild(newP);
     }
   } else if (!finalPhoneNumberRegex.test(userInput.value)) {
+    let newP = document.createElement('p');
     if (!resultsDiv.classList.contains("hidden")) {
-      resultsDiv.innerText = `Invalid US number: ${userInput.value}`;
+      newP.innerText = `Invalid US number: ${userInput.value}`;
+      resultsDiv.appendChild(newP);
     } else if (resultsDiv.classList.contains("hidden")) {
       resultsDiv.classList.remove("hidden");
-      resultsDiv.innerText = `Invalid US number: ${userInput.value}`;
+      newP.innerText = `Invalid US number: ${userInput.value}`;
+      resultsDiv.appendChild(newP);
     }
   }
   
 };
 
 const clearContents = () => {
+  resultsDiv.innerHTML = "";
   if (!resultsDiv.classList.contains("hidden")) {
-    resultsDiv.innerText = "";
+    resultsDiv.innerHTML = "";
     resultsDiv.classList.add("hidden");
   }
 };
