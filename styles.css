@@ -73,6 +73,12 @@ input {
 }
 
 #results-div {
+  max-height: 200px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+#results-div p{
   text-align: center;
   margin-top: 20px;
 }

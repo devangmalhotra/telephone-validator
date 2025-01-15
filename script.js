@@ -15,11 +15,14 @@ const validPhoneNumber = () => {
   if (userInput.value.length === 0) {
     alert("Please provide a phone number");
   } else if (finalPhoneNumberRegex.test(userInput.value)) {
+    let newP = document.createElement('p');
     if (!resultsDiv.classList.contains("hidden")) {
-      resultsDiv.innerText = `Valid US number: ${userInput.value}`;
+      newP.innerText = `Valid US number: ${userInput.value}`;
+      resultsDiv.appendChild(newP);
     } else if (resultsDiv.classList.contains("hidden")) {
       resultsDiv.classList.remove("hidden");
-      resultsDiv.innerText = `Valid US number: ${userInput.value}`;
+      newP.innerText = `Valid US number: ${userInput.value}`;
+      resultsDiv.appendChild(newP);
     }
   } else if (!finalPhoneNumberRegex.test(userInput.value)) {
     if (!resultsDiv.classList.contains("hidden")) {
