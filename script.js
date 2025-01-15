@@ -7,12 +7,27 @@ const validPhoneNumber = () => {
   const countryCodeRegex = '^(1 ?)?';
   const areaCodeRegex = '(\\([0-9]{3}\\)|[0-9]{3})';
   const spaceOrDashRegex = '[ -]?';
-  const numberAfterAreaCodeAndFirstDashRegex = '[0-9]{3}[ -]?[0-9]{4}$'; // since ending, don't need capture group
+  const numberAfterAreaCodeAndFirstDashRegex = '[0-9]{3}[ -]?[0-9]{4}$'; // since ending($), don't need capture group
   const finalPhoneNumberRegex = new RegExp(`${countryCodeRegex}${areaCodeRegex}${spaceOrDashRegex}${numberAfterAreaCodeAndFirstDashRegex}`);
-  console.log(finalPhoneNumberRegex);
+  //console.log(finalPhoneNumberRegex);
+  console.log(finalPhoneNumberRegex.test(userInput.value));
   
   if (userInput.value.length === 0) {
     alert("Please provide a phone number");
+  } else if (finalPhoneNumberRegex.test(userInput.value)) {
+    if (!resultsDiv.classList.contains("hidden")) {
+      resultsDiv.innerText = `Valid US number: ${userInput.value}`;
+    } else if (resultsDiv.classList.contains("hidden")) {
+      resultsDiv.classList.remove("hidden");
+      resultsDiv.innerText = `Valid US number: ${userInput.value}`;
+    }
+  } else if (!finalPhoneNumberRegex.test(userInput.value)) {
+    if (!resultsDiv.classList.contains("hidden")) {
+      resultsDiv.innerText = `Invalid US number: ${userInput.value}`;
+    } else if (resultsDiv.classList.contains("hidden")) {
+      resultsDiv.classList.remove("hidden");
+      resultsDiv.innerText = `Invalid US number: ${userInput.value}`;
+    }
   }
   
 };
